@@ -30,7 +30,18 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
+  }
+}, {
+  toJSON: {
+    transform(doc, ret){
+      //?Info: This is a shortcut for normalizing user model for API response. 
+      //*TODO: create a Service for normalization
+      ret.id = ret._id
+      delete ret._id
+      delete ret.password
+      delete ret.__v
+    }
+  }
 })
 
 userSchema.pre('save', async function (done){
