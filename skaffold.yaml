@@ -16,3 +16,11 @@ build:
         manual:
           - src: 'auth/src/**/*.ts'
             dest: .
+    - image: mroobert/client-app-ticketing
+      context: client
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'client/src/**/*.ts'
+            dest: .
