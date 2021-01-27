@@ -1,15 +1,18 @@
 import React from 'react'
-import Link from 'next/link'
+import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 
-import { Layout } from '@/components/common/Layout'
+import { Layout } from '../components/common/Layout'
+import { getCurrentUserSSR } from '../utils/getCurrentUser'
+import type { PageProps } from '../types'
+
+export async function getServerSideProps(
+  ctx: GetServerSidePropsContext
+): Promise<GetServerSidePropsResult<PageProps>> {
+  const user = await getCurrentUserSSR(ctx)
+  return { props: { currentUser: user } }
+}
 function AboutPage(): React.ReactElement {
-  return (
-    <div>
-      <Link href="/">
-        <a>About</a>
-      </Link>
-    </div>
-  )
+  return <b>Hello from about page</b>
 }
 
 AboutPage.Layout = Layout
