@@ -7,8 +7,7 @@ import { signInRouter } from './routes/sign-in'
 import { signUpRouter } from './routes/sign-up'
 import { signOutRouter } from './routes/sign-out'
 
-import { errorHandler } from './middlewares/error-handler'
-import { RouteNotFoundError } from './errors/route-not-found-error'
+import { errorHandler, RouteNotFoundError } from '@playedby/common'
 
 const app = express()
 app.set('trust proxy', true)
