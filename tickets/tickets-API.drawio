@@ -1,0 +1,73 @@
+<mxfile host="65bd71144e" modified="2021-01-31T13:22:55.552Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="FDmrs_TFv-oWAaDE_POT" version="13.10.0" type="embed">
+    <diagram id="X1uPH2sgndd9xruuCpUF" name="tickets API">
+        <mxGraphModel dx="419" dy="548" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Tickets Service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=18;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="240" width="560" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Route" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="280" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Method" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="280" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Body" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="280" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Goal" style="rounded=0;whiteSpace=wrap;html=1;fontSize=18;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="280" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="/api/tickets" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="320" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="GET" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="320" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="-" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="320" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Retrieve all tickets" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="320" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="/api/tickets/:id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="360" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="GET" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="360" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="-" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="360" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="Retrieve ticket with specific ID" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="360" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="/api/tickets" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="400" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="POST" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="400" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="{ title: string, price: string }" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="400" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Create a ticket" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="400" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="/api/tickets/:id" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="440" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="PUT" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="440" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="{ title: string, price: string }" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="440" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Update a ticket" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="440" width="140" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

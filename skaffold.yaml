@@ -24,3 +24,11 @@ build:
         manual:
           - src: 'client/src/**/*.ts'
             dest: .
+    - image: mroobert/tickets-service
+      context: tickets
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'tickets/src/**/*.ts'
+            dest: .
