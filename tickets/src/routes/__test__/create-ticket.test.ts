@@ -2,6 +2,7 @@ import request from 'supertest'
 
 import { app } from '../../app'
 import { getAuthCookie } from '../../test/cookie-helper'
+import { natsWrapper } from '../../nats-wrapper'
 
 it('has a route handler listening to /api/tickets for POST request', async () => {
   const response = await request(app)
@@ -77,4 +78,14 @@ it('creates a ticket for valid inputs', async () => {
   expect(retrievedId).toEqual(createdId)
   expect(retrievedTitle).toEqual(title)
   expect(retrievedPrice).toEqual(price)
+})
+
+it('publishes an event', async () => {
+  const title = 'Title value'
+  const price = 10
+  const cookie = getAuthCookie('id999', 'test@test.com')
+
+  await request(app).post('/api/tickets').set('Cookie', cookie).send({ title, price }).expect(201)
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled()
 })

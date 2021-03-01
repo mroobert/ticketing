@@ -3,6 +3,7 @@ import request from 'supertest'
 import { app } from '../../app'
 import { getAuthCookie } from '../../test/cookie-helper'
 import { generateId } from '../../test/generate-id-helper'
+import { natsWrapper } from '../../nats-wrapper'
 
 it('returns 400 and error message if an invalid title is provided', async () => {
   const id = generateId()
@@ -70,7 +71,7 @@ it('updates a ticket for valid inputs', async () => {
 
   const createTicketResponse = await request(app)
     .post('/api/tickets')
-    .set('Cookie',cookie )
+    .set('Cookie', cookie)
     .send({ title: initialTitle, price: initialPrice })
     .expect(201)
 
@@ -86,4 +87,29 @@ it('updates a ticket for valid inputs', async () => {
 
   expect(updateTicketResponse.body.title).toEqual(updatedTitle)
   expect(updateTicketResponse.body.price).toEqual(updatedPrice)
+})
+
+it('publishes an event', async () => {
+  const initialTitle = 'Title value'
+  const initialPrice = 10
+
+  const cookie = getAuthCookie('id999', 'test@test.com')
+
+  const createTicketResponse = await request(app)
+    .post('/api/tickets')
+    .set('Cookie', cookie)
+    .send({ title: initialTitle, price: initialPrice })
+    .expect(201)
+
+  const { id: createdId } = createTicketResponse.body
+  const updatedTitle = 'Updated title value'
+  const updatedPrice = 20
+
+  await request(app)
+    .put(`/api/tickets/${createdId}`)
+    .set('Cookie', cookie)
+    .send({ title: updatedTitle, price: updatedPrice })
+    .expect(200)
+
+  expect(natsWrapper.client.publish).toHaveBeenCalledTimes(2)
 })

@@ -17,12 +17,20 @@ spec:
           image: mroobert/tickets-service
           env: 
             - name: MONGO_URI
-              value: mongodb://tickets-mongo-srv:27017/tickets
+              value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: NATS_URI
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: ticketing
+            - name: NATS_CLIENT_ID
+              valueFrom: 
+                fieldRef:
+                  fieldPath: metadata.name
 ---
 apiVersion: v1
 kind: Service

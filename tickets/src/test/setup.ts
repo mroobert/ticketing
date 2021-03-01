@@ -1,10 +1,13 @@
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import mongoose from 'mongoose'
 
-let mongo:any
+jest.mock('../nats-wrapper')
+
+let mongo: any
+
 beforeAll(async () => {
   process.env.JWT_KEY = 'asdasfd'
-  
+
   mongo = new MongoMemoryServer()
   const mongoUri = await mongo.getUri()
 
@@ -15,15 +18,15 @@ beforeAll(async () => {
 })
 
 beforeEach(async () => {
-  const collections = await mongoose.connection.db.collections()
+  jest.clearAllMocks()
 
+  const collections = await mongoose.connection.db.collections()
   for (let collection of collections) {
     await collection.deleteMany({})
   }
 })
 
-
-afterAll(async ()=>{
-    await mongo.stop()
-    mongoose.connection.close()
+afterAll(async () => {
+  await mongo.stop()
+  mongoose.connection.close()
 })

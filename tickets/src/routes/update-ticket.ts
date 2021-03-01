@@ -8,6 +8,8 @@ import {
 } from '@playedby/common'
 
 import { Ticket } from '../models/ticket'
+import { natsWrapper } from '../nats-wrapper'
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher'
 
 const router = express.Router()
 
@@ -37,6 +39,12 @@ router.put(
       price,
     })
     await ticket.save()
+    await new TicketUpdatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    })
 
     res.status(200).send(ticket)
   }
